@@ -1,0 +1,19 @@
+<md-toolbar md-colors="{background: 'blue-900'}" class="md-hue-3">
+  <div class="md-toolbar-tools">
+    <h2 ui-sref="app" flex md-truncate>Noticiero Deportes</h2>
+    <span flex></span>
+    <md-button ng-if="!vm.isLogged" ui-sref="login">
+      Iniciar Sesion
+    </md-button>
+    <md-button  ui-sref="noticias">
+      Noticias
+    </md-button>
+
+    <md-button ng-if="vm.isLogged" ng-click="vm.logout()">
+      Cerrar Sesion
+    </md-button>
+    <md-button ng-if="vm.isLogged" ui-sref="editar">
+      Editar Noticias
+    </md-button>
+  </div>
+</md-toolbar>

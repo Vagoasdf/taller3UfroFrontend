@@ -1,0 +1,51 @@
+<div layout="row" layout-align="center start">
+  <h1>Noticias</h1>
+</div>
+
+
+	<div ng-if="vm.inicio">
+	  <md-card md-colors="{background: 'green-900'}" flex="45" flex-xs="100"  ng-repeat="noticia in vm.noticias">
+	    <md-card-title>
+	      <md-card-title-text>
+	        <span class="md-headline">{{ noticia.titular }}</span>
+	      </md-card-title-text>
+	    </md-card-title>
+	    <md-card-content>
+	      <p> {{ noticia.entrada }}</p>
+	      <img alt="" ng-src="{{noticia.imagen}}" />
+	    	
+
+	    </md-card-content>
+	    <md >
+	    <md-card-actions layout="row" layout-align="start center">
+	       <md-button class="md-raised"  ng-click="vm.mostrarNoticia(noticia.id)"> Mostrar Noticia</md-button>
+
+	    </md-card-actions>
+	  </md-card>
+	</div>
+
+	<div ng-if="vm.focusNoticia">
+		
+		 <md-card md-colors="{background: 'green-900'}" flex="100" flex-xs="100"  >
+	    <md-card-title>
+	      <md-card-title-text>
+	        <span class="md-headline">{{ vm.noticiaActual.titular }}</span>
+	      </md-card-title-text>
+	    </md-card-title>
+	    <md-card-content>
+	      <p> {{ vm.noticiaActual.entrada }}</p>
+	    
+	      <img alt="" ng-src="{{vm.noticiaActual.imagen}}" />
+	      <p>{{ vm.noticiaActual.cuerpo }}</p>
+	    	
+
+	    </md-card-content>
+	    <md >
+	    <md-card-actions layout="row" layout-align="start center">
+	       <md-button class="md-raised"  ng-click="vm.volver()"> Volver al Menu</md-button>
+
+	    </md-card-actions>
+	  </md-card>
+	</div>
+
+</div>

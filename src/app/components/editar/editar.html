@@ -1,0 +1,117 @@
+<div layout="row" layout-align="center start">
+  <h1>Editar Noticias</h1>
+</div>
+
+<div layout="row" layout-align="center ">
+ <md-button class="md-raised"  ng-click="vm.crearNoticia()"> Crear Noticia</md-button>
+</div>
+
+	
+
+	<div ng-if="vm.inicio">
+	  <md-card md-colors="{background: 'grey-900'}" flex="100" flex-xs="100"  ng-repeat="noticia in vm.noticias">
+	    <md-card-title>
+	      <md-card-title-text>
+	        <span class="md-headline">{{noticia.titular }}</span>
+	      </md-card-title-text>
+	    </md-card-title>
+	    <md-card-content>
+	      <p> {{ noticia.entrada }}</p>
+	    	
+
+	    </md-card-content>
+	    <md >
+	    <md-card-actions layout="row" layout-align="start center">
+	       <md-button class="md-raised"  ng-click="vm.editarNoticia(noticia.id)"> Editar Noticia</md-button>
+	       <md-button class="md-raised"  ng-click="vm.borrarNoticia(noticia.id)"> Eliminar Noticia</md-button>
+
+	    </md-card-actions>
+	  </md-card>
+	</div>
+
+	
+
+	<div ng-if="vm.editar">
+		
+		<md-content layout-padding>
+		    <div>
+		      <form name="noticiaEditar">
+
+
+		        <div layout-gt-sm="row">
+		          <md-input-container class="md-block" flex-gt-sm>
+		            <label>Titulo</label>
+		            <input ng-model="vm.noticiaActual.titular">
+		          </md-input-container>
+
+		          <md-input-container class="md-block" flex-gt-sm>
+		            <label>entrada</label>
+		            <input ng-model="vm.noticiaActual.entrada">
+		          </md-input-container>
+		        </div>
+
+		        <md-input-container class="md-block">
+		          <label>Imagen</label>
+		          <input ng-model="vm.noticiaActual.imagen">
+		        </md-input-container>
+
+
+		       
+
+		        <md-input-container class="md-block">
+		          <label>Cuerpo</label>
+		          <textarea ng-model="vm.noticiaActual.cuerpo" md-maxlength="1000" rows="5" md-select-on-focus></textarea>
+		        </md-input-container>
+
+		      </form>
+		    </div>
+		    <md-button class="md-raised"  ng-click="vm.guardar(vm.noticiaActual)"> Guardar Cambios</md-button>
+		    <md-button class="md-raised"  ng-click="vm.volver()">Volver</md-button>
+		</md-content>
+	</div>
+
+	<div ng-if="vm.nuevaNoticia">
+		
+		<md-content layout-padding>
+		    <div>
+		      <form name="noticiaNueva"  ng-submit="vm.subirNoticia(noticiaNueva)">
+
+
+		        <div layout-gt-sm="row">
+		          <md-input-container class="md-block" flex-gt-sm>
+		            <label>Titulo</label>
+		            <input ng-model="noticiaNueva.titular">
+		          </md-input-container>
+
+		          <md-input-container class="md-block" flex-gt-sm>
+		            <label>entrada</label>
+		            <input ng-model="noticiaNueva.entrada">
+		          </md-input-container>
+		        </div>
+
+		        <md-input-container class="md-block">
+		          <label>Imagen</label>
+		          <input ng-model="noticiaNueva.imagen">
+		        </md-input-container>
+
+		        <md-select ng-model="noticiaNueva.categoria_id">
+              		<label>Categoria</label>
+              		<md-option ng-repeat="categoria in vm.categorias" value="{{categoria.id}}">
+                		{{categoria.descripcion}}
+              		</md-option>
+            	</md-select>
+		       
+
+		        <md-input-container class="md-block">
+		          <label>Cuerpo</label>
+		          <textarea ng-model="noticiaNueva.cuerpo" md-maxlength="1000" rows="5" md-select-on-focus></textarea>
+		        </md-input-container>
+
+		        <md-button type="submit">Submit</md-button>
+		      </form>
+		    </div>
+		    <md-button class="md-raised"  ng-click="vm.volver()">Volver</md-button>
+		</md-content>
+	</div>
+
+</div>
